@@ -34,34 +34,34 @@ $(wildcard ../makefile.init) \
 $(wildcard ../makefile.targets) \
 
 
-BUILD_ARTIFACT_NAME := ASCII-Parser
+BUILD_ARTIFACT_NAME := STM32 Message Parser
 BUILD_ARTIFACT_EXTENSION := elf
 BUILD_ARTIFACT_PREFIX :=
 BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ARTIFACT_EXTENSION),.$(BUILD_ARTIFACT_EXTENSION),)
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXECUTABLES += \
-ASCII-Parser.elf \
+STM32\ Message\ Parser.elf \
 
 MAP_FILES += \
-ASCII-Parser.map \
+STM32\ Message\ Parser.map \
 
 SIZE_OUTPUT += \
 default.size.stdout \
 
 OBJDUMP_LIST += \
-ASCII-Parser.list \
+STM32\ Message\ Parser.list \
 
 
 # All Target
 all: main-build
 
 # Main-build Target
-main-build: ASCII-Parser.elf secondary-outputs
+main-build: STM32\ Message\ Parser.elf secondary-outputs
 
 # Tool invocations
-ASCII-Parser.elf ASCII-Parser.map: $(OBJS) $(USER_OBJS) C:\Users\tomfr_ife4m4s\Documents\GitHub\ASCII-Parser\STM32\ Software\STM32F411RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "ASCII-Parser.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\tomfr_ife4m4s\Documents\GitHub\ASCII-Parser\STM32 Software\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="ASCII-Parser.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+STM32\ Message\ Parser.elf STM32\ Message\ Parser.map: $(OBJS) $(USER_OBJS) C:\Users\tomfr\Documents\GitHub\ASCII-Parser\STM32\ Software\STM32F411RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "STM32 Message Parser.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\tomfr\Documents\GitHub\ASCII-Parser\STM32 Software\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32 Message Parser.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -70,14 +70,14 @@ default.size.stdout: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	@echo 'Finished building: $@'
 	@echo ' '
 
-ASCII-Parser.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "ASCII-Parser.list"
+STM32\ Message\ Parser.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "STM32 Message Parser.list"
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) ASCII-Parser.elf ASCII-Parser.list ASCII-Parser.map default.size.stdout
+	-$(RM) STM32\ Message\ Parser.elf STM32\ Message\ Parser.list STM32\ Message\ Parser.map STM32\\ Message\\ Parser.elf default.size.stdout
 	-@echo ' '
 
 secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)
